@@ -38,6 +38,7 @@ public class Clean_Calls {
              }
              System.out.print("The Sript is ready at location"+System.getProperty("user.dir"));
              System.out.print("\\GTC__P&R_Script.txt");
+             System.out.println("hello");
              
              }
              
