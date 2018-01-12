@@ -1,0 +1,1114 @@
+Action()
+{
+
+	web_custom_request("BI", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/BI", 
+		"Method=GET", 
+		"Resource=0", 
+		"RecContentType=text/html", 
+		"Referer=", 
+		"Snapshot=t145.inf", 
+		"Mode=HTTP", 
+		LAST);
+
+	web_custom_request("logon.faces", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/logon.faces", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/html", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/BI", 
+		"Snapshot=t146.inf", 
+		"Mode=HTTP", 
+		LAST);
+
+	web_concurrent_start(NULL);
+
+	web_custom_request("appService.do", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/common/appService.do?service=skinning&resource=stylesheet&dir=ltr", 
+		"Method=GET", 
+		"Resource=1", 
+		"RecContentType=text/css", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/logon.faces", 
+		"Snapshot=t148.inf", 
+		LAST);
+
+	web_concurrent_end(NULL);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	lr_think_time(19);
+
+	lr_start_transaction("1_Login");
+
+	web_custom_request("logon.faces_2", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/logon.faces", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/html", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/logon.faces", 
+		"Snapshot=t162.inf", 
+		"Mode=HTTP", 
+		"Body=_id0%3Alogon%3ACMS=MO-9A9388607%3A6400&_id0%3Alogon%3AUSERNAME=Administrator&_id0%3Alogon%3APASSWORD=Password1&com.sun.faces.VIEW=_id545%3A_id546&_id0=_id0", 
+		LAST);
+
+	web_custom_request("main.do", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/listing/main.do?service=%2Fcommon%2FappService.do&appKind=InfoView", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/html", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/logon.faces", 
+		"Snapshot=t163.inf", 
+		"Mode=HTTP", 
+		"Body=bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ", 
+		LAST);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	web_custom_request("ResetSessionTime", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/BIPCoreWeb/ResetSessionTime?rand=6365", 
+		"Method=GET", 
+		"Resource=0", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/listing/main.do?service=%2Fcommon%2FappService.do&appKind=InfoView", 
+		"Snapshot=t221.inf", 
+		"Mode=HTTP", 
+		LAST);
+
+	web_concurrent_start(NULL);
+
+	web_custom_request("DataLoader", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/DataLoader?dictionary=true", 
+		"Method=GET", 
+		"Resource=1", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/listing/main.do?service=%2Fcommon%2FappService.do&appKind=InfoView", 
+		"Snapshot=t222.inf", 
+		LAST);
+
+	web_concurrent_end(NULL);
+
+	web_custom_request("home.do", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/listing/home.do?appKind=InfoView&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ", 
+		"Method=GET", 
+		"Resource=0", 
+		"RecContentType=text/html", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/listing/main.do?service=%2Fcommon%2FappService.do&appKind=InfoView", 
+		"Snapshot=t225.inf", 
+		"Mode=HTTP", 
+		LAST);
+
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	web_custom_request("AFDashboardPageView.do", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/PerformanceManagement/jsp/AFDashboardPageView.do?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&objIds=0&loc=en&service=%2FInfoView%2Fcommon%2FappService.do&pvl=en_US&pref=pref%3DmaxOpageUt%253D200%253BmaxOpageC%253D10%253Btz%253DUTC%253BmUnit%253Dinch%253BshowFilters%253Dtrue%253BsmtpFrom%253Dtrue%253BpromptForUnsavedData%253Dtrue%253B&actId=4727&appKind="
+		"InfoView&homeDashboard=true", 
+		"Method=GET", 
+		"Resource=0", 
+		"RecContentType=text/html", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/listing/home.do?appKind=InfoView&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ", 
+		"Snapshot=t229.inf", 
+		"Mode=HTTP", 
+		LAST);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	lr_end_transaction("1_Login",LR_AUTO);
+
+	lr_think_time(22);
+
+	lr_start_transaction("2_Click_Documets");
+
+	web_custom_request("infoviewListing.faces", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/jsp/InfoView_Listing/infoviewListing.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=4577&objIds=12&containerId=&pref="
+		"maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B", 
+		"Method=GET", 
+		"Resource=0", 
+		"RecContentType=text/html", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/listing/main.do?service=%2Fcommon%2FappService.do&appKind=InfoView", 
+		"Snapshot=t274.inf", 
+		"Mode=HTTP", 
+		LAST);
+
+	
+
+	
+
+	web_custom_request("ajaxRequest", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/ajaxUre/ajaxRequest", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/jsp/InfoView_Listing/infoviewListing.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=4577&objIds=12&containerId=&pref="
+		"maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B", 
+		"Snapshot=t349.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=ureId=/BOE/portal/1703020641/InfoViewAppActions/jsp/InfoView_Listing/infoviewListing.faces_ListingURE_InfoViewListing&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&action=openAccordionDrawer&id=0&nodeSelection=&com.businessobjects.client.concurrent.sessionCounter=0&com.businessobjects.client.concurrent.requestCounter=0", 
+		LAST);
+
+	web_custom_request("ajaxRequest_2", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/ajaxUre/ajaxRequest", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/jsp/InfoView_Listing/infoviewListing.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=4577&objIds=12&containerId=&pref="
+		"maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B", 
+		"Snapshot=t350.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=ureId=/BOE/portal/1703020641/InfoViewAppActions/jsp/InfoView_Listing/infoviewListing.faces_ListingURE_InfoViewListing&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&action=navigationViewNavigate&id=823&navigationViewId=MyDocs&nodeSelection=&com.businessobjects.client.concurrent.sessionCounter=0&com.businessobjects.client.concurrent.requestCounter=1", 
+		LAST);
+
+	lr_end_transaction("2_Click_Documets",LR_AUTO);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	lr_think_time(23);
+
+	lr_start_transaction("3_Folder_Listing");
+
+	web_custom_request("ajaxRequest_3", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/ajaxUre/ajaxRequest", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/jsp/InfoView_Listing/infoviewListing.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=4577&objIds=12&containerId=&pref="
+		"maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B", 
+		"Snapshot=t354.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=ureId=/BOE/portal/1703020641/InfoViewAppActions/jsp/InfoView_Listing/infoviewListing.faces_ListingURE_InfoViewListing&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&action=openAccordionDrawer&id=1&nodeSelection=&com.businessobjects.client.concurrent.sessionCounter=0&com.businessobjects.client.concurrent.requestCounter=2", 
+		LAST);
+
+	web_custom_request("ajaxRequest_4", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/ajaxUre/ajaxRequest", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/jsp/InfoView_Listing/infoviewListing.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=4577&objIds=12&containerId=&pref="
+		"maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B", 
+		"Snapshot=t355.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=ureId=/BOE/portal/1703020641/InfoViewAppActions/jsp/InfoView_Listing/infoviewListing.faces_ListingURE_InfoViewListing&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&action=navigationViewNavigate&id=23&navigationViewId=accordionNavigationView_drawer1&nodeSelection=&com.businessobjects.client.concurrent.sessionCounter=0&com.businessobjects.client.concurrent.requestCounter=3", 
+		LAST);
+
+	lr_end_transaction("3_Folder_Listing",LR_AUTO); 
+	*/
+
+	lr_think_time(24);
+
+	lr_start_transaction("4_Open_Folder");
+
+	web_custom_request("ajaxRequest_5", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/ajaxUre/ajaxRequest", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/jsp/InfoView_Listing/infoviewListing.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=4577&objIds=12&containerId=&pref="
+		"maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B", 
+		"Snapshot=t357.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=ureId=/BOE/portal/1703020641/InfoViewAppActions/jsp/InfoView_Listing/infoviewListing.faces_ListingURE_InfoViewListing&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&action=getSelectionEnabledActions&ids=6787_23&nodeSelection=&com.businessobjects.client.concurrent.sessionCounter=0&com.businessobjects.client.concurrent.requestCounter=4", 
+		LAST);
+
+	web_custom_request("ajaxRequest_6", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/ajaxUre/ajaxRequest", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/jsp/InfoView_Listing/infoviewListing.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=4577&objIds=12&containerId=&pref="
+		"maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B", 
+		"Snapshot=t358.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=ureId=/BOE/portal/1703020641/InfoViewAppActions/jsp/InfoView_Listing/infoviewListing.faces_ListingURE_InfoViewListing&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&action=navigate&id=6787_23&next=9&nodeSelection=6787_23&com.businessobjects.client.concurrent.sessionCounter=0&com.businessobjects.client.concurrent.requestCounter=5", 
+		LAST);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	web_custom_request("ajaxRequest_7", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/ajaxUre/ajaxRequest", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/jsp/InfoView_Listing/infoviewListing.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=4577&objIds=12&containerId=&pref="
+		"maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B", 
+		"Snapshot=t361.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=ureId=/BOE/portal/1703020641/InfoViewAppActions/jsp/InfoView_Listing/infoviewListing.faces_ListingURE_InfoViewListing&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&action=expand&id=23&navigationViewId=accordionNavigationView_drawer1&nodeSelection=6787_23&com.businessobjects.client.concurrent.sessionCounter=0&com.businessobjects.client.concurrent.requestCounter=6", 
+		LAST);
+
+	web_custom_request("ajaxRequest_8", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/ajaxUre/ajaxRequest", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/jsp/InfoView_Listing/infoviewListing.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=4577&objIds=12&containerId=&pref="
+		"maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B", 
+		"Snapshot=t362.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=ureId=/BOE/portal/1703020641/InfoViewAppActions/jsp/InfoView_Listing/infoviewListing.faces_ListingURE_InfoViewListing&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&action=getSelectionEnabledActions&ids=7174_6787_23&nodeSelection=6787_23&com.businessobjects.client.concurrent.sessionCounter=0&com.businessobjects.client.concurrent.requestCounter=7", 
+		LAST);
+
+	web_custom_request("ajaxRequest_9", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/ajaxUre/ajaxRequest", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/jsp/InfoView_Listing/infoviewListing.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=4577&objIds=12&containerId=&pref="
+		"maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B", 
+		"Snapshot=t363.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=ureId=/BOE/portal/1703020641/InfoViewAppActions/jsp/InfoView_Listing/infoviewListing.faces_ListingURE_InfoViewListing&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&action=getSelectionEnabledActions&ids=7174_6787_23&nodeSelection=6787_23&com.businessobjects.client.concurrent.sessionCounter=0&com.businessobjects.client.concurrent.requestCounter=8", 
+		LAST);
+
+	lr_end_transaction("4_Open_Folder",LR_AUTO);
+
+	lr_think_time(16); 
+	*/
+
+	lr_start_transaction("5_View_Documents");
+
+	web_custom_request("ajaxRequest_10", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/ajaxUre/ajaxRequest", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/jsp/InfoView_Listing/infoviewListing.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=4577&objIds=12&containerId=&pref="
+		"maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B", 
+		"Snapshot=t365.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=ureId=/BOE/portal/1703020641/InfoViewAppActions/jsp/InfoView_Listing/infoviewListing.faces_ListingURE_InfoViewListing&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&action=getSelectionEnabledActions&ids=424136_6787_23&nodeSelection=7174_6787_23&com.businessobjects.client.concurrent.sessionCounter=0&com.businessobjects.client.concurrent.requestCounter=9", 
+		LAST);
+
+	web_custom_request("MarkAsReadAction.do", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/MarkAsReadAction.do?objIds=424136&appKind=InfoView&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ", 
+		"Method=GET", 
+		"Resource=0", 
+		"RecContentType=text/html", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/listing/main.do?service=%2Fcommon%2FappService.do&appKind=InfoView", 
+		"Snapshot=t367.inf", 
+		"Mode=HTTP", 
+		LAST);
+
+	web_custom_request("AddRecentDocument", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/AddRecentDocument?objIds=424136&appKind=InfoView&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&objKind=LUMX", 
+		"Method=GET", 
+		"Resource=0", 
+		"RecContentType=text/html", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/listing/main.do?service=%2Fcommon%2FappService.do&appKind=InfoView", 
+		"Snapshot=t368.inf", 
+		"Mode=HTTP", 
+		LAST);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	web_custom_request("view.faces", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime=6159-424136-1488951762836", 
+		"Method=GET", 
+		"Resource=0", 
+		"RecContentType=text/html", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/listing/main.do?service=%2Fcommon%2FappService.do&appKind=InfoView", 
+		"Snapshot=t371.inf", 
+		"Mode=HTTP", 
+		LAST);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	web_custom_request("vizext", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/vizext/?installType=addon", 
+		"Method=GET", 
+		"Resource=0", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t385.inf", 
+		"Mode=HTTP", 
+		LAST);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	web_custom_request("dumpSystemProperties", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/dumpSystemProperties", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t417.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		LAST);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	web_custom_request("getLogLevel", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/getLogLevel", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t420.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		LAST);
+
+	web_custom_request("getAllModuleNames", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/getAllModuleNames", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t421.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		LAST);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	web_custom_request("getAllModulePath", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/getAllModulePath", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t426.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		LAST);
+
+	web_concurrent_start(NULL);
+
+	web_custom_request("getProviderBundles", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/getProviderBundles?ids=sap.bi.da.extension.client&_=1488951763849", 
+		"Method=GET", 
+		"Resource=1", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t431.inf", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		LAST);
+
+	web_custom_request("getProviderBundles_2", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/getProviderBundles?_=1488951763850", 
+		"Method=GET", 
+		"Resource=1", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t438.inf", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		LAST);
+
+	web_concurrent_end(NULL);
+
+	web_custom_request("getPreferredViewingLocale", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/getPreferredViewingLocale", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t519.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		LAST);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	web_custom_request("applicationPropertiesManagerGetProperty", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/applicationPropertiesManagerGetProperty", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t616.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=key=userpreferences", 
+		LAST);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	lr_think_time(4);
+
+	web_custom_request("web.do", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/web.do?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime=6159-424136-1488951762836", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/html", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t774.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		LAST);
+
+	web_custom_request("BOETimeoutPing", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/listing/BOETimeoutPing", 
+		"Method=POST", 
+		"Resource=0", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/listing/main.do?service=%2Fcommon%2FappService.do&appKind=InfoView", 
+		"Snapshot=t776.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=resetCountdown=false&logoff=false&appKind=InfoView", 
+		LAST);
+
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+/* Added by Async CodeGen.
+ID = Poll_0
+ */
+	
+
+	web_custom_request("zen", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/zen", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/xml", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t788.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded;charset=UTF-8", 
+		"Body=ZEN_1STCALL=X&cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime=6159-424136-1488951762836&sap-ext-sid=3b105a249a8f4303bb711f1239c3a955", 
+		LAST);
+
+	web_concurrent_start(NULL);
+
+	web_custom_request("zen.rt.components.lumira.calculations.properties", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/zen.res/zen.rt.components.lumira.calculations/resources/strings/zen.rt.components.lumira.calculations.properties?version=20170301085957", 
+		"Method=GET", 
+		"Resource=1", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t901.inf", 
+		LAST);
+
+	web_custom_request("localization.properties", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/zen.res/zen.rt.components.lumira/i18n/localization.properties", 
+		"Method=GET", 
+		"Resource=1", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t912.inf", 
+		LAST);
+
+	web_concurrent_end(NULL);
+
+	web_custom_request("getOpenWorkspaceResponse", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/getOpenWorkspaceResponse", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1135.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=workspaceId=04919d82-7c65-4705-b80e-75f0ccd24fbe", 
+		LAST);
+
+	web_concurrent_start(NULL);
+
+	web_custom_request("SAP-icons.ttf", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/resources/sap/ui/core/themes/base/fonts/SAP-icons.ttf", 
+		"Method=GET", 
+		"Resource=1", 
+		"RecContentType=application/x-font-ttf", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1139.inf", 
+		LAST);
+
+	web_concurrent_end(NULL);
+
+	web_custom_request("zen_2", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/zen?sdk_type=com_sap_ip_bi_RefreshDataset&sdk_id=LUMIRA_REFRESH_DATASET_HANDLER&sdk_cause=PropertiesChanged", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/xml", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1141.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded;charset=UTF-8", 
+		"Body=BI_COMMAND=&BI_COMMAND-BI_COMMAND_TYPE=GET_SNIPPET&BI_COMMAND-KEEP_SERVER_STATE=X&BI_COMMAND_1=&BI_COMMAND_1-BI_COMMAND_TYPE=UPDATE_PROPERTIES&BI_COMMAND_1-TARGET_ITEM_REF=LUMIRA_REFRESH_DATASET_HANDLER&BI_COMMAND_1-CHANGES=&BI_COMMAND_1-CHANGES-STATE=DatasourceRefreshed&BI_COMMAND_1-PREVENT_UNDO=X&PAGE_ID=1_M2IxMDVhMjQ5YThmNDMwM2JiNzExZjEyMzljM2E5NTU%3D&REQUEST_ID=1&SESSION_RESOURCE_ID=Af3wiF4gBU9GnlkwOkUE8o4", 
+		LAST);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	web_custom_request("getConsumptionModel", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/getConsumptionModel", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1144.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=datasetId=2%2F04919d82-7c65-4705-b80e-75f0ccd24fbe", 
+		LAST);
+
+	web_custom_request("GetDataSetSourceInfo", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/GetDataSetSourceInfo", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1145.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=workspaceId=04919d82-7c65-4705-b80e-75f0ccd24fbe&datasetId=2", 
+		LAST);
+
+	web_custom_request("getDataSetDictionary", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/getDataSetDictionary", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1146.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=dataSetSelector=%7B%22workspaceId%22%3A%2204919d82-7c65-4705-b80e-75f0ccd24fbe%22%2C%22dataSetId%22%3A%222%22%2C%22dataSetRevision%22%3A%22latest%22%2C%22editOrRefresh%22%3Atrue%7D", 
+		LAST);
+
+	web_custom_request("getVisualArtifactsDefinition", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/getVisualArtifactsDefinition", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1147.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=datasetIds=%5B%222%22%2C%2216%22%2C%2211%22%2C%226%22%2C%2213%22%5D&workspaceId=04919d82-7c65-4705-b80e-75f0ccd24fbe&artifactTypes=%5B%22VISUALIZATION%22%2C%22VIZROOMINFO%22%5D", 
+		LAST);
+
+	web_custom_request("zen_3", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/zen?sdk_type=com_sap_ip_bi_PreferredView&sdk_id=PREFERRED_VIEW_HANDLER&sdk_cause=PropertiesChanged", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/xml", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1148.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded;charset=UTF-8", 
+		"Body=BI_COMMAND=&BI_COMMAND-BI_COMMAND_TYPE=GET_SNIPPET&BI_COMMAND-KEEP_SERVER_STATE=X&BI_COMMAND-PREVENT_UNDO=X&BI_COMMAND_1=&BI_COMMAND_1-BI_COMMAND_TYPE=UPDATE_PROPERTIES&BI_COMMAND_1-TARGET_ITEM_REF=PREFERRED_VIEW_HANDLER&BI_COMMAND_1-CHANGES=&BI_COMMAND_1-CHANGES-VIEW=_prof_3_grid&PAGE_ID=1_M2IxMDVhMjQ5YThmNDMwM2JiNzExZjEyMzljM2E5NTU%3D&REQUEST_ID=1&SESSION_RESOURCE_ID=Af3wiF4gBU9GnlkwOkUE8o4", 
+		LAST);
+
+	web_custom_request("GetDataSetSourceInfo_2", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/GetDataSetSourceInfo", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1149.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=workspaceId=04919d82-7c65-4705-b80e-75f0ccd24fbe&datasetId=16", 
+		LAST);
+
+/* Added by Async CodeGen.
+ID=Poll_1
+ScanType = Recording
+
+The following URLs are considered part of this conversation:
+	http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/DataLoader?notification=true&usercurrenttime=2017-3-8%205%3A43&usertimezoneoffset=-0%3A00
+	http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/DataLoader?notification=true&usercurrenttime=2017-3-8%205%3A44&usertimezoneoffset=-0%3A00
+	http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/DataLoader?notification=true&usercurrenttime=2017-3-8%205%3A45&usertimezoneoffset=-0%3A00
+
+TODO - The following callbacks have been added to AsyncCallbacks.c.
+Add your code to the callback implementations as necessary.
+	Poll_1_RequestCB
+	Poll_1_ResponseCB
+ */
+	web_reg_async_attributes("ID=Poll_1", 
+		"Pattern=Poll", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/DataLoader?notification=true&usercurrenttime=2017-3-8%205%3A43&usertimezoneoffset=-0%3A00", 
+		"PollIntervalMs=31000", 
+		"RequestCB=Poll_1_RequestCB", 
+		"ResponseCB=Poll_1_ResponseCB", 
+		LAST);
+
+	web_custom_request("getConsumptionModel_2", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/getConsumptionModel", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1151.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=datasetId=16%2F04919d82-7c65-4705-b80e-75f0ccd24fbe", 
+		LAST);
+
+	web_custom_request("getDataSetDictionary_2", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/getDataSetDictionary", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1152.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=dataSetSelector=%7B%22workspaceId%22%3A%2204919d82-7c65-4705-b80e-75f0ccd24fbe%22%2C%22dataSetId%22%3A%222%22%2C%22dataSetRevision%22%3A%22latest%22%7D", 
+		LAST);
+
+	web_custom_request("getConsumptionModel_3", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/getConsumptionModel", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1153.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=datasetId=2%2F04919d82-7c65-4705-b80e-75f0ccd24fbe", 
+		LAST);
+
+	web_custom_request("getConsumptionModel_4", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/getConsumptionModel", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1154.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=datasetId=11%2F04919d82-7c65-4705-b80e-75f0ccd24fbe", 
+		LAST);
+
+	web_custom_request("GetDataSetSourceInfo_3", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/GetDataSetSourceInfo", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1155.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=workspaceId=04919d82-7c65-4705-b80e-75f0ccd24fbe&datasetId=6", 
+		LAST);
+
+	web_custom_request("executeQuery", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/executeQuery", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1156.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=dataSetSelector=%7B%22workspaceId%22%3A%2204919d82-7c65-4705-b80e-75f0ccd24fbe%22%2C%22dataSetId%22%3A%222%22%2C%22dataSetRevision%22%3A%22latest%22%7D&startIndex=0&numberOfRows=140&filters=&sorts=", 
+		LAST);
+
+	web_custom_request("GetDataSetSourceInfo_4", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/GetDataSetSourceInfo", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1157.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=workspaceId=04919d82-7c65-4705-b80e-75f0ccd24fbe&datasetId=11", 
+		LAST);
+
+	web_custom_request("getConsumptionModel_5", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/getConsumptionModel", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1158.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=datasetId=6%2F04919d82-7c65-4705-b80e-75f0ccd24fbe", 
+		LAST);
+
+	web_custom_request("GetDataSetSourceInfo_5", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/GetDataSetSourceInfo", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1159.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=workspaceId=04919d82-7c65-4705-b80e-75f0ccd24fbe&datasetId=13", 
+		LAST);
+
+	web_custom_request("getConsumptionModel_6", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/getConsumptionModel", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1160.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=datasetId=13%2F04919d82-7c65-4705-b80e-75f0ccd24fbe", 
+		LAST);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	web_custom_request("zen_4", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/zen?sdk_type=com_sap_ip_bi_RefreshDataset&sdk_id=LUMIRA_REFRESH_DATASET_HANDLER&sdk_cause=PropertiesChanged", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/xml", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1165.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded;charset=UTF-8", 
+		"Body=BI_COMMAND=&BI_COMMAND-BI_COMMAND_TYPE=GET_SNIPPET&BI_COMMAND-KEEP_SERVER_STATE=X&BI_COMMAND_1=&BI_COMMAND_1-BI_COMMAND_TYPE=UPDATE_PROPERTIES&BI_COMMAND_1-TARGET_ITEM_REF=LUMIRA_REFRESH_DATASET_HANDLER&BI_COMMAND_1-CHANGES=&BI_COMMAND_1-CHANGES-STATE=DatasourceRefreshed&BI_COMMAND_1-PREVENT_UNDO=X&PAGE_ID=1_M2IxMDVhMjQ5YThmNDMwM2JiNzExZjEyMzljM2E5NTU%3D&REQUEST_ID=1&SESSION_RESOURCE_ID=Af3wiF4gBU9GnlkwOkUE8o4", 
+		LAST);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+	web_custom_request("zen_5", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/zen?sdk_type=com_sap_ip_bi_PreferredView&sdk_id=PREFERRED_VIEW_HANDLER&sdk_cause=PropertiesChanged", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/xml", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1172.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded;charset=UTF-8", 
+		"Body=BI_COMMAND=&BI_COMMAND-BI_COMMAND_TYPE=GET_SNIPPET&BI_COMMAND-KEEP_SERVER_STATE=X&BI_COMMAND-PREVENT_UNDO=X&BI_COMMAND_1=&BI_COMMAND_1-BI_COMMAND_TYPE=UPDATE_PROPERTIES&BI_COMMAND_1-TARGET_ITEM_REF=PREFERRED_VIEW_HANDLER&BI_COMMAND_1-CHANGES=&BI_COMMAND_1-CHANGES-VIEW=_prof_3_grid&PAGE_ID=1_M2IxMDVhMjQ5YThmNDMwM2JiNzExZjEyMzljM2E5NTU%3D&REQUEST_ID=1&SESSION_RESOURCE_ID=Af3wiF4gBU9GnlkwOkUE8o4", 
+		LAST);
+
+	web_custom_request("zen_6", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/zen?sdk_type=com_sap_ip_bi_LumiraGlobalToolbarActions&sdk_id=LUMIRAGLOBALTOOLBARACTIONS&sdk_cause=PropertiesChangedAndEvent", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/xml", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1173.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded;charset=UTF-8", 
+		"Body=BI_COMMAND=&BI_COMMAND-BI_COMMAND_TYPE=GET_SNIPPET&BI_COMMAND-KEEP_SERVER_STATE=X&BI_COMMAND_1=&BI_COMMAND_1-BI_COMMAND_TYPE=UPDATE_PROPERTIES&BI_COMMAND_1-TARGET_ITEM_REF=LUMIRAGLOBALTOOLBARACTIONS&BI_COMMAND_1-CHANGES=&&BI_COMMAND_1-PREVENT_UNDO=X&BI_COMMAND_2=&BI_COMMAND_2-EVENT_NAME=bookmarkPersonalizationEvent&BI_COMMAND_2-BI_COMMAND_TYPE=&BI_COMMAND_2-COMPONENT_NAME=LUMIRAGLOBALTOOLBARACTIONS&BI_COMMAND_2-COMMAND_INTERPRETER=BIAL&BI_COMMAND_2-PREVENT_UNDO=X&PAGE_ID="
+		"1_M2IxMDVhMjQ5YThmNDMwM2JiNzExZjEyMzljM2E5NTU%3D&REQUEST_ID=1&SESSION_RESOURCE_ID=Af3wiF4gBU9GnlkwOkUE8o4", 
+		LAST);
+
+	web_custom_request("zen_7", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/zen?sdk_type=com_sap_ip_bi_RefreshDataset&sdk_id=LUMIRA_REFRESH_DATASET_HANDLER&sdk_cause=PropertiesChanged", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/xml", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1174.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded;charset=UTF-8", 
+		"Body=BI_COMMAND=&BI_COMMAND-BI_COMMAND_TYPE=GET_SNIPPET&BI_COMMAND-KEEP_SERVER_STATE=X&BI_COMMAND_1=&BI_COMMAND_1-BI_COMMAND_TYPE=UPDATE_PROPERTIES&BI_COMMAND_1-TARGET_ITEM_REF=LUMIRA_REFRESH_DATASET_HANDLER&BI_COMMAND_1-CHANGES=&BI_COMMAND_1-CHANGES-STATE=DatasourceRefreshed&BI_COMMAND_1-PREVENT_UNDO=X&PAGE_ID=1_M2IxMDVhMjQ5YThmNDMwM2JiNzExZjEyMzljM2E5NTU%3D&REQUEST_ID=1&SESSION_RESOURCE_ID=Af3wiF4gBU9GnlkwOkUE8o4", 
+		LAST);
+
+	lr_think_time(29); 
+	*/
+
+	web_custom_request("getDataSetDictionary_3", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/getDataSetDictionary", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1176.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=dataSetSelector=%7B%22workspaceId%22%3A%2204919d82-7c65-4705-b80e-75f0ccd24fbe%22%2C%22dataSetId%22%3A%2213%22%2C%22dataSetRevision%22%3A%22latest%22%7D", 
+		LAST);
+
+	web_custom_request("getDataSetDictionary_4", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/getDataSetDictionary", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1177.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=dataSetSelector=%7B%22workspaceId%22%3A%2204919d82-7c65-4705-b80e-75f0ccd24fbe%22%2C%22dataSetId%22%3A%2211%22%2C%22dataSetRevision%22%3A%22latest%22%7D", 
+		LAST);
+
+	web_custom_request("getDataSetDictionary_5", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/getDataSetDictionary", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1178.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=dataSetSelector=%7B%22workspaceId%22%3A%2204919d82-7c65-4705-b80e-75f0ccd24fbe%22%2C%22dataSetId%22%3A%226%22%2C%22dataSetRevision%22%3A%22latest%22%7D", 
+		LAST);
+
+	web_custom_request("getDataSetDictionary_6", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/getDataSetDictionary", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1179.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=dataSetSelector=%7B%22workspaceId%22%3A%2204919d82-7c65-4705-b80e-75f0ccd24fbe%22%2C%22dataSetId%22%3A%2216%22%2C%22dataSetRevision%22%3A%22latest%22%7D", 
+		LAST);
+
+	web_custom_request("executeQuery_2", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/executeQuery", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1180.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=dataSetSelector=%7B%22workspaceId%22%3A%2204919d82-7c65-4705-b80e-75f0ccd24fbe%22%2C%22dataSetId%22%3A%222%22%2C%22dataSetRevision%22%3A%22latest%22%7D&startIndex=0&numberOfRows=140&filters=&sorts=", 
+		LAST);
+
+	web_concurrent_start(NULL);
+
+	web_concurrent_end(NULL);
+
+/* Added by Async CodeGen.
+ID = Poll_1
+ */
+	
+
+	lr_end_transaction("5_View_Documents",LR_AUTO);
+
+	lr_start_transaction("6_CloseWorkSpace");
+
+	web_custom_request("closeWorkspace", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/sap/service/pjs/closeWorkspace", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=application/json", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1185.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=workspaceId=04919d82-7c65-4705-b80e-75f0ccd24fbe", 
+		LAST);
+
+	web_custom_request("zen_8", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/zen", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/html", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/LumiraWebApp/view.faces?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&opendocTarget=infoviewOpenDocFrame&appKind=InfoView&service=%2FInfoView%2Fcommon%2FappService.do&loc=en&pvl=en_US&ctx=standalone&actId=6159&objIds=424136&containerId=6787&pref=maxOpageUt%3D200%3BmaxOpageC%3D10%3Btz%3DUTC%3BmUnit%3Dinch%3BshowFilters%3Dtrue%3BsmtpFrom%3Dtrue%3BpromptForUnsavedData%3Dtrue%3B&tidtime="
+		"6159-424136-1488951762836", 
+		"Snapshot=t1186.inf", 
+		"Mode=HTTP", 
+		"EncType=application/x-www-form-urlencoded; charset=UTF-8", 
+		"Body=sap-sessioncmd=USR_ABORT&sap-ext-sid=3b105a249a8f4303bb711f1239c3a955", 
+		LAST);
+
+	lr_end_transaction("6_CloseWorkSpace",LR_AUTO);
+
+	lr_start_transaction("7_Logoff");
+
+	web_custom_request("TimeoutSession", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/BIPCoreWeb/TimeoutSession?rand=2233&logofflink=true", 
+		"Method=GET", 
+		"Resource=0", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/listing/main.do?service=%2Fcommon%2FappService.do&appKind=InfoView", 
+		"Snapshot=t1188.inf", 
+		"Mode=HTTP", 
+		LAST);
+
+	web_custom_request("logoff.do", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/logon/logoff.do?bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ", 
+		"Method=GET", 
+		"Resource=0", 
+		"RecContentType=text/html", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/listing/main.do?service=%2Fcommon%2FappService.do&appKind=InfoView", 
+		"Snapshot=t1189.inf", 
+		"Mode=HTTP", 
+		LAST);
+
+	web_concurrent_start(NULL);
+
+	web_custom_request("cleanup.jsp", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/CmcAppActions/jsp/Cleanup_CmcAppActions/cleanup.jsp?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&loc=en&service=%2FInfoView%2Fcommon%2FappService.do&actId=4763&appKind=InfoView", 
+		"Method=GET", 
+		"Resource=0", 
+		"RecContentType=text/html", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/logon/logoff.do?bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ", 
+		"Snapshot=t1190.inf", 
+		"Mode=HTTP", 
+		LAST);
+
+	web_custom_request("cleanup.do", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/CrystalReports/cleanup/cleanup.do?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&loc=en&service=%2FInfoView%2Fcommon%2FappService.do&actId=4764&appKind=InfoView", 
+		"Method=GET", 
+		"Resource=0", 
+		"RecContentType=text/html", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/logon/logoff.do?bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ", 
+		"Snapshot=t1191.inf", 
+		"Mode=HTTP", 
+		LAST);
+
+	web_custom_request("cleanup.do_2", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/PlatformServices/cleanup/cleanup.do?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&loc=en&service=%2FInfoView%2Fcommon%2FappService.do&actId=4879&appKind=InfoView", 
+		"Method=GET", 
+		"Resource=0", 
+		"RecContentType=text/html", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/logon/logoff.do?bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ", 
+		"Snapshot=t1193.inf", 
+		"Mode=HTTP", 
+		LAST);
+
+	web_custom_request("Cleanup.do", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoViewAppActions/Cleanup.do?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&loc=en&service=%2FInfoView%2Fcommon%2FappService.do&actId=4950&appKind=InfoView", 
+		"Method=GET", 
+		"Resource=0", 
+		"RecContentType=text/html", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/logon/logoff.do?bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ", 
+		"Snapshot=t1194.inf", 
+		"Mode=HTTP", 
+		LAST);
+
+	web_custom_request("Cleanup.do_2", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/PerformanceManagement/Cleanup.do?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&loc=en&service=%2FInfoView%2Fcommon%2FappService.do&actId=4951&appKind=InfoView", 
+		"Method=GET", 
+		"Resource=0", 
+		"RecContentType=text/html", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/logon/logoff.do?bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ", 
+		"Snapshot=t1195.inf", 
+		"Mode=HTTP", 
+		LAST);
+
+	web_custom_request("Cleanup.do_3", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/AnalyticalReporting/Cleanup.do?cafWebSesInit=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&loc=en&service=%2FInfoView%2Fcommon%2FappService.do&actId=4980&appKind=InfoView", 
+		"Method=GET", 
+		"Resource=0", 
+		"RecContentType=text/html", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/logon/logoff.do?bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ", 
+		"Snapshot=t1196.inf", 
+		"Mode=HTTP", 
+		LAST);
+
+	web_concurrent_end(NULL);
+
+	web_custom_request("logoff.do_2", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/logon/logoff.do", 
+		"Method=POST", 
+		"Resource=0", 
+		"RecContentType=text/html", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/logon/logoff.do?bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ", 
+		"Snapshot=t1197.inf", 
+		"Mode=HTTP", 
+		"Body=cleanedUp=true&bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ", 
+		LAST);
+
+	web_custom_request("logon.faces_3", 
+		"URL=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/logon.faces?bttoken=MDAwREhlUzljYDc5TlFtak1FWmhZND1mO29JT19kMzAEQ&skipSso=true", 
+		"Method=GET", 
+		"Resource=0", 
+		"RecContentType=text/html", 
+		"Referer=http://mo-9a9388607.mo.sap.corp:8080/BOE/portal/1703020641/InfoView/logon/logoff.do", 
+		"Snapshot=t1198.inf", 
+		"Mode=HTTP", 
+		LAST);
+
+	return 0;
+}
